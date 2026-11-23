@@ -6,7 +6,7 @@
 window.SITE_DATA = {
   name: "Gopika Gopan",
   email: "gopikagopan.1091@gmail.com",
-  linkedin: "https://www.linkedin.com/in/YOUR-HANDLE", // <- replace
+  linkedin: "https://www.linkedin.com/in/gopikagopan1091/", 
   resume: "",                                           // <- public Drive link to your PDF (optional)
   location: "Sydney, NSW",
 
