@@ -275,6 +275,35 @@
     shapes[k].style.transform = `translate(${p[0]}vw,${p[1]}vh) rotate(${p[2]}deg)`;
   });
 
+  /* ---------- guidance: "next page" button at the end of long pages + first-visit hint ---------- */
+  const cue = document.createElement('button');
+  cue.className = 'nextcue'; cue.type = 'button';
+  document.body.appendChild(cue);
+  cue.onclick = () => go(cur + 1);
+  const updateCue = () => {
+    const p = panels[cur];
+    const long = !!p && p.scrollHeight - p.clientHeight > 4;
+    const atEnd = long && p.scrollTop >= p.scrollHeight - p.clientHeight - 6;
+    if (atEnd && cur < N - 1) cue.innerHTML = `<small>End of page</small>Next: ${panels[cur + 1].dataset.title} <span aria-hidden="true">→</span>`;
+    cue.classList.toggle('on', atEnd && cur < N - 1);
+  };
+  panels.forEach((p) => p.addEventListener('scroll', updateCue, { passive: true }));
+  addEventListener('resize', updateCue);
+  addEventListener('load', updateCue);
+
+  const hint = document.createElement('div');
+  hint.className = 'navhint';
+  const coarse = matchMedia('(pointer:coarse)').matches;
+  hint.innerHTML = coarse ? 'Swipe up or tap <b>→</b> to explore' : 'Scroll, or use <b>←</b> <b>→</b> keys, to explore';
+  document.body.appendChild(hint);
+  let hintSeen = false, booted = false;
+  try { hintSeen = localStorage.getItem('navHintSeen') === '1'; } catch (e) {}
+  const hideHint = () => {
+    hint.classList.remove('on');
+    if (!hintSeen) { hintSeen = true; try { localStorage.setItem('navHintSeen', '1'); } catch (e) {} }
+  };
+  hint.onclick = hideHint;
+
   function go(n, force) {
     n = Math.max(0, Math.min(N - 1, n));
     if ((n === cur && !force) || lock) return;
@@ -290,6 +319,8 @@
     $('#cur').textContent = String(n + 1).padStart(2, '0');
     panels[n].scrollTop = 0;
     place(n);
+    if (booted) hideHint();
+    setTimeout(updateCue, 60);
     history.replaceState(null, '', '#' + panels[n].id);
   }
 
@@ -383,5 +414,8 @@
   const start = Math.max(0, panels.findIndex((p) => '#' + p.id === location.hash));
   panels.forEach((p, i) => p.classList.add(i > start ? 'after' : 'before'));
   place(start);
-  requestAnimationFrame(() => requestAnimationFrame(() => { cur = -1; go(start, true); }));
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    cur = -1; go(start, true); booted = true;
+    if (start === 0 && !hintSeen) setTimeout(() => hint.classList.add('on'), 1200);
+  }));
 })();
