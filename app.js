@@ -28,36 +28,102 @@
 
   /* ---------- content ---------- */
   const WCOL = ['#f7c948', '#b79be0', '#f6a56b'];
+  const slug = (t) => 'skill-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const roles = D.roles.map((r) => ({
-    id: r.id, color: r.color, meta: r.dates, title: r.title, sub: r.org,
+    sec: 'roles', id: r.id, color: r.color, meta: r.dates, title: r.title, sub: r.org, short: r.short || r.org,
     list: r.points, listLabel: 'Achievements', chips: r.skills || [], chipsLabel: 'Skills', tags: r.tags || [], imgs: []
   }));
   const work = D.work.map((w, n) => ({
-    id: w.id, kind: w.kind, color: WCOL[n % 3], meta: w.kind + ' · ' + w.tag, title: w.title,
-    desc: w.desc, chips: w.stack || [], chipsLabel: 'Built with', tags: w.stack || [], imgs: []
+    sec: 'work', id: w.id, kind: w.kind, color: WCOL[n % 3], meta: w.kind + ' · ' + w.tag, title: w.title,
+    desc: w.desc, chips: w.stack || [], chipsLabel: 'Built with', tags: w.stack || [], imgs: [],
+    roleIds: w.roles || [], under: w.under || [], workIds: []
   }));
+  const caps = D.capabilities.map((c, n) => ({
+    sec: 'skills', id: slug(c.t), color: WCOL[n % 3], meta: 'Capability', title: c.t, desc: c.d, chips: [], tags: [], imgs: [],
+    roleIds: c.roles || [], workIds: c.work || [], under: c.under || [], isCap: true
+  }));
+  const tools = D.toolkit.map((c, n) => ({
+    sec: 'skills', id: slug(c.t), color: WCOL[n % 3], meta: 'Tool / skill', title: c.t, chips: [], tags: [], imgs: [],
+    roleIds: c.roles || [], workIds: c.work || [], under: c.under || []
+  }));
+  const skills = caps.concat(tools);
+  const sites = (D.websites || []).map((s, n) => ({
+    sec: 'sites', id: s.id, url: s.url, title: s.title, desc: s.desc, color: WCOL[n % 3], tags: s.tags || [],
+    roleIds: s.roles || [], workIds: s.work || []
+  }));
+  if (!sites.length) $('#websites').remove();
+
   const SEC = {
     roles: { all: roles, shown: roles, track: $('#roles-track') },
-    work: { all: work, shown: work, track: $('#work-track') }
+    work: { all: work, shown: work, track: $('#work-track') },
+    skills: { all: skills, shown: skills }
   };
+  const byId = (sec, id) => SEC[sec].all.find((x) => x.id === id);
+  const pick = (sec, ids) => ids.map((i) => byId(sec, i)).filter(Boolean);
+
+  // one clickable chip per linked item (websites open in a new tab, everything else opens its pop-up)
+  const lc = (x) => x.url
+    ? `<a class="lnk" href="${x.url}" target="_blank" rel="noopener">${x.title} ↗</a>`
+    : `<button class="lnk" data-open="${x.sec}:${x.id}">${x.short || x.title}</button>`;
+  const plain = (a) => a.map((p) => `<span>${p}</span>`).join('');
+
+  // the cross-links between roles, projects/tools and skills
+  function groups(it) {
+    const g = [], add = (label, items, p = []) => { if (items.length || p.length) g.push({ label, items, p }); };
+    if (it.sec === 'roles') {
+      add('Tools & projects built here', work.filter((w) => w.roleIds.includes(it.id)));
+      add('Capabilities & skills it feeds', skills.filter((x) => x.roleIds.includes(it.id)));
+      add('Websites', sites.filter((x) => x.roleIds.includes(it.id)));
+    } else if (it.sec === 'work') {
+      add('Built under', pick('roles', it.roleIds), it.under);
+      add('Capabilities & skills used', skills.filter((x) => x.workIds.includes(it.id)));
+      add('Websites', sites.filter((x) => x.workIds.includes(it.id)));
+    } else if (it.sec === 'skills') {
+      add('Derived from roles', pick('roles', it.roleIds), it.under);
+      add('Seen in projects & tools', pick('work', it.workIds));
+    }
+    return g;
+  }
 
   function renderRail(sec) {
     const S = SEC[sec];
-    S.track.innerHTML = S.shown.map((it, i) =>
-      `<button class="card" data-i="${i}" style="--c:${it.color}"><span class="date">${it.meta}</span><h3>${it.title}</h3>` +
-      (it.sub ? `<p class="org">${it.sub}</p>` : '') + (it.desc ? `<p class="d">${it.desc}</p>` : '') +
-      chips(it.tags) + `<span class="more">View details →</span></button>`).join('');
+    S.track.innerHTML = S.shown.map((it, i) => {
+      const via = it.sec === 'work' && (it.roleIds.length || it.under.length)
+        ? `<p class="via">↳ ${pick('roles', it.roleIds).map((r) => r.short).concat(it.under).join(' · ')}</p>` : '';
+      return `<button class="card" data-i="${i}" style="--c:${it.color}"><span class="date">${it.meta}</span><h3>${it.title}</h3>` +
+        (it.sub ? `<p class="org">${it.sub}</p>` : '') + (it.desc ? `<p class="d">${it.desc}</p>` : '') + via +
+        chips(it.tags) + `<span class="more">View details →</span></button>`;
+    }).join('');
   }
   renderRail('roles'); renderRail('work');
 
-  $('#toolkit').innerHTML = D.toolkit.map((x) => `<span>${x}</span>`).join('');
-  $('#cap-grid').innerHTML = D.capabilities.map((c, i) => `<div class="tile" style="--i:${i}"><b>${c.t}</b><small>${c.d}</small></div>`).join('');
+  if (sites.length) {
+    const THUMB = (u) => 'https://image.thum.io/get/width/700/crop/440/noanimate/' + u;
+    $('#sites-track').innerHTML = sites.map((s) =>
+      `<a class="card site" href="${s.url}" target="_blank" rel="noopener" style="--c:${s.color}">` +
+      `<div class="thumb"><img alt="" loading="lazy" data-id="${s.id}" src="${THUMB(s.url)}"></div>` +
+      `<h3>${s.title}</h3>${s.desc ? `<p class="d">${s.desc}</p>` : ''}` +
+      (s.roleIds.length ? `<p class="via">↳ ${pick('roles', s.roleIds).map((r) => r.short).join(' · ')}</p>` : '') +
+      chips(s.tags) + `<span class="more">Visit site ↗</span></a>`).join('');
+    $$('#sites-track .thumb img').forEach(async (im) => {
+      im.onerror = () => im.remove();
+      const u = await findImage('site-' + im.dataset.id.replace(/^site-/, '') + '-1');
+      if (u) im.src = u;
+    });
+  }
+
+  $('#toolkit').innerHTML = tools.map(lc).join('');
+  $('#cap-grid').innerHTML = caps.map((c, i) =>
+    `<div class="tile" data-open="skills:${c.id}" style="--i:${i}"><b>${c.title}</b><small>${c.desc}</small>` +
+    ((c.roleIds.length || c.under.length) ? `<div class="chips from"><em>From</em>${pick('roles', c.roleIds).map(lc).join('')}${plain(c.under)}</div>` : '') + `</div>`).join('');
   $('#edu').innerHTML = D.education.map((e, i) =>
-    `<div class="edu fly" style="--i:${i + 1}"><span class="dt">${e.d}</span><h3>${e.t}</h3><div class="s">${e.s}</div><p>${e.n}</p></div>`).join('');
-  $('#certs').innerHTML = D.certs.map((c) => `<li><div>${c[0]}<span>${c[1]}</span></div><b>${c[2]}</b></li>`).join('');
+    `<div class="blk edu fly" style="--i:${i + 1}"><span class="dt">${e.d}</span><h3>${e.t}</h3><div class="s">${e.s}</div><p>${e.n}</p></div>`).join('');
+  $('#certs').innerHTML = D.certs.map((c, i) =>
+    `<div class="blk cert fly" style="--i:${i + 3}"><span class="dt">${c[1]}</span><h3>${c[0]}</h3>${c[2] ? `<b>${c[2]}</b>` : ''}</div>`).join('');
   $('#c-mail').href = 'mailto:' + D.email;
   $('#c-in').href = D.linkedin;
   if (D.resume) $('#c-cv').href = D.resume; else $('#c-cv').style.display = 'none';
+  if (D.hero && D.hero.now) $('#now').innerHTML = `<small>${D.hero.now[0]}</small><b>${D.hero.now[1]}</b><span>${D.hero.now[2]}</span>`;
 
   /* cover photos: images/profile-1.ext and images/hero-accent-1.ext */
   $$('.frame[data-img]').forEach(async (f) => {
@@ -93,7 +159,7 @@
   const veil = $('#veil'), modal = $('#modal'), lb = $('#lb');
   const PAL = ['#5d3a99', '#f7c948', '#ee7c34', '#e5604d', '#b79be0', '#f6a56b'];
   const W_SEQ = [1, .74, .92, .68, .86, .7];
-  let P = { sec: 'roles', i: 0 };
+  let P = { sec: 'roles', i: 0, list: roles };
   const popOpen = () => veil.classList.contains('on');
 
   const textHTML = (it) =>
@@ -101,10 +167,11 @@
     (it.sub ? `<p class="org">${it.sub}</p>` : '') +
     (it.desc ? `<p class="pdesc">${it.desc}</p>` : '') +
     (it.list && it.list.length ? `<h4>${it.listLabel}</h4><ul>${it.list.map((a) => `<li>${a}</li>`).join('')}</ul>` : '') +
-    (it.chips.length ? `<h4>${it.chipsLabel}</h4>${chips(it.chips)}` : '');
+    (it.chips.length ? `<h4>${it.chipsLabel}</h4>${chips(it.chips)}` : '') +
+    groups(it).map((g) => `<h4>${g.label}</h4><div class="chips">${g.items.map(lc).join('')}${plain(g.p)}</div>`).join('');
 
   function build() {
-    const list = SEC[P.sec].shown, it = list[P.i], IM = it.imgs, n = IM.length;
+    const list = P.list, it = list[P.i], IM = it.imgs, n = IM.length;
     const nav = list.length > 1
       ? `<div class="rnav"><button id="rp" aria-label="Previous">←</button><b>${P.i + 1} / ${list.length}</b><button id="rn" aria-label="Next">→</button></div>` : '';
     const vw = innerWidth, vh = innerHeight;
@@ -139,12 +206,26 @@
     if ($('#rp')) { $('#rp').onclick = () => goPop(-1); $('#rn').onclick = () => goPop(1); }
   }
   function goPop(d) {
-    const len = SEC[P.sec].shown.length;
+    const len = P.list.length;
     P.i = (P.i + d + len) % len;
     build();
     modal.animate([{ opacity: 0, transform: `translateX(${d * 28}px)` }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.2,.8,.2,1)' });
   }
-  function openPop(sec, i) { ready.then(() => { P = { sec, i }; build(); veil.classList.add('on'); }); }
+  function openPop(sec, i, list) { ready.then(() => { P = { sec, i, list: list || SEC[sec].shown }; build(); veil.classList.add('on'); }); }
+  function openId(sec, id) {
+    const L = SEC[sec].all, i = L.findIndex((x) => x.id === id);
+    if (i < 0) return;
+    const was = popOpen();
+    openPop(sec, i, L);
+    if (was) ready.then(() => modal.animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: 300, easing: 'cubic-bezier(.2,.8,.2,1)' }));
+  }
+  document.addEventListener('click', (e) => {
+    const o = e.target.closest('[data-open]');
+    if (!o) return;
+    e.preventDefault();
+    const k = o.dataset.open, c = k.indexOf(':');
+    openId(k.slice(0, c), k.slice(c + 1));
+  });
   function closePop() { veil.classList.remove('on'); }
   veil.onclick = (e) => { if (e.target === veil) closePop(); };
   lb.onclick = () => lb.classList.remove('on');
@@ -168,14 +249,13 @@
     const f = b.dataset.f;
     SEC.work.shown = f === 'all' ? SEC.work.all : SEC.work.all.filter((x) => x.kind === f);
     renderRail('work');
-    SEC.work.track.scrollLeft = 0;
-    SEC.work.track.dispatchEvent(new Event('scroll'));
   });
 
   /* ---------- sections, nav, roaming shapes ---------- */
   const panels = $$('.panel');
   const N = panels.length;
   let cur = 0, lock = false;
+  panels.forEach((p, i) => { const n = $('.no', p); if (n) n.textContent = '№ ' + String(i + 1).padStart(2, '0'); });
   $('#tot').textContent = String(N).padStart(2, '0');
 
   $('#nav').innerHTML = panels.map((p, i) => `<button data-go="${i}">${p.dataset.title}</button>`).join('');
@@ -276,31 +356,11 @@
     go(cur + Math.sign(d));
   }, { passive: true });
 
-  /* ---------- rails: arrows, drag-to-scroll, progress, card clicks ---------- */
-  let moved = false;
-  $$('.hscroll').forEach((r) => {
-    const panel = r.closest('.panel');
-    const bar = r.parentElement.querySelector('.prog span');
-    const prev = $(`.arrows button[data-rail="${r.id}"][data-dir="-1"]`, panel);
-    const next = $(`.arrows button[data-rail="${r.id}"][data-dir="1"]`, panel);
-    const upd = () => {
-      const m = r.scrollWidth - r.clientWidth;
-      bar.style.width = (m > 0 ? Math.max(8, 100 * (r.scrollLeft / m)) : 100) + '%';
-      if (prev) prev.disabled = r.scrollLeft < 4;
-      if (next) next.disabled = r.scrollLeft > m - 4;
-    };
-    r.addEventListener('scroll', upd, { passive: true }); upd(); addEventListener('resize', upd);
-    if (prev) prev.onclick = () => r.scrollBy({ left: -r.clientWidth * .6, behavior: 'smooth' });
-    if (next) next.onclick = () => r.scrollBy({ left: r.clientWidth * .6, behavior: 'smooth' });
-    let down = false, sx = 0, sl = 0;
-    r.addEventListener('pointerdown', (e) => { if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = r.scrollLeft; r.classList.add('drag'); });
-    addEventListener('pointermove', (e) => { if (down) { const d = e.clientX - sx; if (Math.abs(d) > 5) moved = true; r.scrollLeft = sl - d; } });
-    addEventListener('pointerup', () => { down = false; r.classList.remove('drag'); setTimeout(() => (moved = false), 0); });
-    r.addEventListener('click', (e) => {
-      const c = e.target.closest('.card');
-      if (c && !moved) openPop(r.dataset.sec, +c.dataset.i);
-    });
-  });
+  /* ---------- grids: card clicks ---------- */
+  $$('.g3[data-sec]').forEach((g) => g.addEventListener('click', (e) => {
+    const c = e.target.closest('.card');
+    if (c) openPop(g.dataset.sec, +c.dataset.i);
+  }));
 
   /* ---------- boot ---------- */
   const start = Math.max(0, panels.findIndex((p) => '#' + p.id === location.hash));
