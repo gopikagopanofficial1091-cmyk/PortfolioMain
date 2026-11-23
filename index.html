@@ -20,7 +20,7 @@
 <header class="mast">
   <a class="brand" href="#cover" data-go="0">G<span>.</span> Gopan</a>
   <nav id="nav" aria-label="Sections"></nav>
-  <span class="count"><b id="cur">01</b> / <span id="tot">07</span></span>
+  <span class="count"><b id="cur">01</b> / <span id="tot">06</span></span>
 </header>
 
 <main id="stage">
@@ -34,11 +34,10 @@
         <p class="lead fly" style="--i:2">Graduate consultant in the making. I turn <mark>ambiguous problems</mark> into structured, <mark>data-driven outcomes</mark> across fast-paced, multi-stakeholder teams.</p>
         <div class="btns fly" style="--i:3">
           <button class="pill solid" data-go="1">Roles</button>
-          <button class="pill" data-go="2">Tools built</button>
-          <button class="pill" data-go="3">Projects</button>
-          <button class="pill" data-go="4">Capabilities</button>
-          <button class="pill" data-go="5">Credentials</button>
-          <button class="pill ghost" data-go="6">Contact →</button>
+          <button class="pill" data-go="2">Projects &amp; tools</button>
+          <button class="pill" data-go="3">Capabilities</button>
+          <button class="pill" data-go="4">Credentials</button>
+          <button class="pill ghost" data-go="5">Contact →</button>
         </div>
         <ul class="stats fly" style="--i:4">
           <li><b>60+</b><span>community members founded</span></li>
@@ -56,47 +55,55 @@
 
   <!-- 02 ROLES -->
   <section class="panel" id="roles" data-title="Roles">
-    <header class="head fly" style="--i:0"><span class="no">№ 02</span><h2>Roles <em>I've held</em></h2><p>Leadership, delivery and community — scroll sideways.</p></header>
-    <div class="rail fly" style="--i:1"><div class="hscroll" id="roles-track"></div><div class="prog"><span></span></div></div>
+    <div class="float" data-float="roles" aria-hidden="true"></div>
+    <header class="head row fly" style="--i:0">
+      <div><span class="no">№ 02</span><h2>Roles <em>I've held</em></h2><p>Leadership, delivery and community. Click a card for details.</p></div>
+      <div class="arrows"><button data-rail="roles-track" data-dir="-1" aria-label="Previous">←</button><button data-rail="roles-track" data-dir="1" aria-label="Next">→</button></div>
+    </header>
+    <div class="rail fly" style="--i:1"><div class="hscroll" id="roles-track" data-sec="roles"></div><div class="prog"><span></span></div></div>
   </section>
 
-  <!-- 03 TOOLS -->
-  <section class="panel" id="tools" data-title="Tools built">
-    <header class="head fly" style="--i:0"><span class="no">№ 03</span><h2>Tools <em>built</em></h2><p>Models, apps and frameworks made to solve a real problem.</p></header>
-    <div class="rail fly" style="--i:1"><div class="hscroll" id="tools-track"></div><div class="prog"><span></span></div></div>
+  <!-- 03 PROJECTS & TOOLS -->
+  <section class="panel" id="work" data-title="Projects &amp; tools">
+    <div class="float" data-float="work" aria-hidden="true"></div>
+    <header class="head row fly" style="--i:0">
+      <div>
+        <span class="no">№ 03</span><h2>Projects <em>&amp; tools</em></h2>
+        <p>Models, apps, frameworks and self-initiated work. Click a card for details.</p>
+        <div class="filters" id="filters">
+          <button class="on" data-f="all">All</button><button data-f="Tool">Tools</button><button data-f="Project">Projects</button>
+        </div>
+      </div>
+      <div class="arrows"><button data-rail="work-track" data-dir="-1" aria-label="Previous">←</button><button data-rail="work-track" data-dir="1" aria-label="Next">→</button></div>
+    </header>
+    <div class="rail fly" style="--i:1"><div class="hscroll" id="work-track" data-sec="work"></div><div class="prog"><span></span></div></div>
   </section>
 
-  <!-- 04 PROJECTS -->
-  <section class="panel" id="projects" data-title="Projects">
-    <header class="head fly" style="--i:0"><span class="no">№ 04</span><h2>Independent <em>projects</em></h2><p>Self-initiated work, from events to launches.</p></header>
-    <div class="rail fly" style="--i:1"><div class="hscroll" id="projects-track"></div><div class="prog"><span></span></div></div>
-  </section>
-
-  <!-- 05 CAPABILITIES -->
+  <!-- 04 CAPABILITIES -->
   <section class="panel" id="capabilities" data-title="Capabilities">
     <div class="split">
-      <header class="head fly" style="--i:0"><span class="no">№ 05</span><h2>The consultant's <em>toolkit</em></h2><p>How I work, and what I work with.</p>
+      <header class="head fly" style="--i:0"><span class="no">№ 04</span><h2>The consultant's <em>toolkit</em></h2><p>How I work, and what I work with.</p>
         <div class="chips" id="toolkit"></div>
       </header>
       <div class="tiles" id="cap-grid"></div>
     </div>
   </section>
 
-  <!-- 06 CREDENTIALS -->
+  <!-- 05 CREDENTIALS -->
   <section class="panel" id="credentials" data-title="Credentials">
     <div class="split">
       <div>
-        <header class="head fly" style="--i:0"><span class="no">№ 06</span><h2>Education <em>& credentials</em></h2></header>
+        <header class="head fly" style="--i:0"><span class="no">№ 05</span><h2>Education <em>&amp; credentials</em></h2></header>
         <div id="edu"></div>
       </div>
       <div class="certs fly u" style="--i:2"><h3>Certifications</h3><ul id="certs"></ul></div>
     </div>
   </section>
 
-  <!-- 07 CONTACT -->
+  <!-- 06 CONTACT -->
   <section class="panel" id="contact" data-title="Contact">
     <div class="contact">
-      <span class="no fly" style="--i:0">№ 07</span>
+      <span class="no fly" style="--i:0">№ 06</span>
       <h2 class="fly" style="--i:1">Let's build something <em>that lasts.</em></h2>
       <p class="lead fly" style="--i:2">Open to graduate consulting roles. Based in Sydney.</p>
       <div class="btns fly" style="--i:3">
@@ -114,6 +121,10 @@
   <div id="dots"></div>
   <button id="next" aria-label="Next section">→</button>
 </div>
+
+<!-- detail pop-up + image lightbox -->
+<div class="veil" id="veil"><div class="modal" id="modal"></div></div>
+<div class="lb" id="lb"></div>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
