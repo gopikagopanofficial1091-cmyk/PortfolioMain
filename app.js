@@ -9,17 +9,19 @@
   const EXTS = D.imageExts || ['jpg', 'jpeg', 'png', 'webp', 'svg', 'gif', 'avif'];
   const MAXIMG = D.imageMax || 12;
   const probe = (url) => new Promise((res) => { const i = new Image(); i.onload = () => res(true); i.onerror = () => res(false); i.src = url; });
+  const ALLEXTS = EXTS.concat(EXTS.map((e) => e.toUpperCase()));
   async function findImage(name) {
-    const hits = await Promise.all(EXTS.map((e) => probe(DIR + name + '.' + e)));
+    const hits = await Promise.all(ALLEXTS.map((e) => probe(DIR + name + '.' + e)));
     const i = hits.indexOf(true);
-    return i < 0 ? null : DIR + name + '.' + EXTS[i];
+    return i < 0 ? null : DIR + name + '.' + ALLEXTS[i];
   }
+  // tolerates up to 2 missing numbers in a row (e.g. -1, -3, -4 still works)
   async function loadImages(id) {
     const out = [];
-    for (let n = 1; n <= MAXIMG; n++) {
+    let miss = 0;
+    for (let n = 1; n <= MAXIMG && miss < 3; n++) {
       const u = await findImage(id + '-' + n);
-      if (!u) break;
-      out.push(u);
+      if (u) { out.push(u); miss = 0; } else miss++;
     }
     return out;
   }
