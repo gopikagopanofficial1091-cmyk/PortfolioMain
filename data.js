@@ -19,37 +19,44 @@ window.SITE_DATA = {
   linkedin: "https://www.linkedin.com/in/gopikagopan1091",
   resume: "",                                           // <- link/path to your PDF (optional)
 
-  hero: { now: ["Currently", "Graduate", "M. Business Analytics, UTS"] },  // text in the small home-page box (shown until images/hero-accent-1.jpg exists)
+  hero: { now: ["Seeking", "Graduate Consultant", "M. Business Analytics, UTS"] },  // text in the small home-page box (shown until images/hero-accent-1.jpg exists)
 
   imageDir: "images/",
   imageExts: ["jpg", "jpeg", "png", "webp", "svg", "gif", "avif"],
   imageMax: 12, // most images the site will look for per item
 
   roles: [
-    { id: "role-180dc", color: "#f7c948", dates: "Jun 2025 – Present", short: "180DC", title: "Vice President, Operations", org: "180 Degrees Consulting, UTS",
+    { id: "role-export-connect", color: "#ee7c34", dates: "Aug 2026 – Nov 2026", short: "Export Connect", title: "Project Intern", org: "Export Connect · Agri-food export consultancy",
+      tags: ["Market analysis", "Looker Studio", "Scorecards"],
+      points: ["Ranked export markets for a national horticulture strategy: validated trade data and built a weighted scorecard with rating rules and confidence scores across 192 crop–market combinations (16 crops, 15 markets), giving a transparent, repeatable ranking colleagues could verify and update.",
+               "Turned the scorecard into a Looker Studio dashboard and plain-language briefing slides for a high-level meeting of 5 stakeholder representatives and company executives, showing where to focus and why.",
+               "Analysed ~5 grower and exporter interviews and 5–10 adjacent-category case studies, managing priorities with MoSCoW, to add primary and secondary evidence and shape the dashboard's focus on market access and feasibility."],
+      skills: ["Market analysis", "Scoring models", "Looker Studio", "Stakeholder briefing", "Prioritisation (MoSCoW)"] },
+    { id: "role-180dc", color: "#f7c948", dates: "Jun 2025 – Present", short: "180DC", title: "Vice President", org: "180 Degrees Consulting, UTS",
       tags: ["Process design", "KPIs", "Leadership"],
-      points: ["Redesigned end-to-end workflows across a 20+ member consulting club, cutting analyst ramp-up time.",
-               "Built a competency-based evaluation framework tied to organisational KPIs.",
-               "Set strategic priorities and delivery benchmarks with senior leadership."],
+      points: ["Diagnosed structural inefficiencies across a 20+ member consulting club and redesigned end-to-end workflows, reducing analyst ramp-up time and improving project team readiness across concurrent client engagements.",
+               "Developed and implemented a competency-based evaluation framework aligned to organisational KPIs, enabling data-driven talent decisions and measurable performance improvements across cross-functional teams.",
+               "Collaborated with senior leadership to define strategic priorities, establish performance benchmarks and track delivery outcomes against measurable operational metrics."],
       skills: ["Process design", "KPIs", "Stakeholder management", "People analytics"] },
     { id: "role-wizoona", color: "#b79be0", dates: "May 2024 – Mar 2025", short: "Wizoona", title: "President & Co-Founder", org: "Wizoona · Community startup",
       tags: ["Founding", "Partnerships", "Scaling"],
-      points: ["Scaled a non-profit to 60+ members across two streams within one month.",
-               "Secured partnerships with two premier Indian universities in Year 1.",
-               "Shipped a website and standardised onboarding for seamless leadership transitions."],
+      points: ["Founded and scaled a non-profit community to 60+ members across two specialised streams within one month, recruiting exclusively from India's top-ranked engineering and business institutions.",
+               "Secured formal partnerships with two premier Indian universities within Year 1, driving sustained engagement through weekly speaker sessions, fortnightly community events and a curated resource newsletter.",
+               "Deployed an interactive website and standardised onboarding process, enabling rapid team scaling and seamless leadership transitions across a growing cross-institutional network."],
       skills: ["Founding", "Partnerships", "Community building", "Onboarding design"] },
     { id: "role-foruppo", color: "#f6a56b", dates: "Dec 2023 – Nov 2024", short: "Foruppo", title: "Project Management Intern → Cohort Lead", org: "Foruppo",
       tags: ["Agile", "MVPs", "Team culture"],
-      points: ["Delivered multiple product MVPs in 2-week Agile sprints.",
-               "Promoted twice in three months to lead team processes, culture and workflows."],
+      points: ["Delivered multiple product MVPs across 2-week Agile sprints, translating ambiguous briefs into structured deliverables through rapid prototyping and iterative design.",
+               "Led end-to-end design and development of a debate-practice platform across three builds (an AI chatbot in Botpress, a topic resource library in WordPress and a speaker transcript archive in Framer), managing scope, timelines and stakeholder expectations.",
+               "Promoted twice in three months to Cohort Lead, taking ownership of team processes, culture and workflows across multiple concurrent cross-functional project teams."],
       skills: ["Agile / sprints", "Product MVPs", "Team leadership"] },
     { id: "role-notetaking", color: "#f7c948", dates: "Feb 2026 – Present", short: "UTS Notetaking", title: "Notetaking Assistant", org: "UTS Accessibility Support Program",
       tags: ["Accessibility", "Clarity"],
-      points: ["Produces clear, accessible course notes for three students, matched to individual learning needs."],
+      points: ["Providing structured academic support to three students, producing clear and accessible course notes aligned to individual learning needs."],
       skills: ["Accessibility", "Structured writing", "Reliability"] },
-    { id: "role-revertech", color: "#b79be0", dates: "Sep – Dec 2021", short: "Revertech", title: "Marketing Intern", org: "Revertech IT Solutions",
+    { id: "role-revertech", color: "#b79be0", dates: "Sep – Dec 2021", short: "Revertech", title: "Marketing Intern", org: "Revertech IT Solutions Pvt. Ltd",
       tags: ["Campaigns", "Digital marketing"],
-      points: ["Helped plan and run 5+ digital campaigns in a 20-member team, driving 20+ enrolments."],
+      points: ["Contributed to planning and execution of 5+ digital marketing campaigns within a 20-member team, driving enrolment of 20+ students into the company's flagship program."],
       skills: ["Digital campaigns", "Teamwork", "Content"] }
   ],
 
@@ -58,19 +65,19 @@ window.SITE_DATA = {
     { id: "tool-linkedin", kind: "Tool", tag: "Web app", title: "LinkedIn Content Generator",
       desc: "Generates Export Connect LinkedIn posts with live research, a voice picker and carousel slide-count control, paired with a Canva carousel template.",
       stack: ["Web app", "Live research", "Canva"],
-      roles: [], under: ["Export Connect"] },
+      roles: ["role-export-connect"], under: [] },
     { id: "tool-export-potential", kind: "Tool", tag: "Excel model", title: "Export Potential Predictor",
-      desc: "In-Excel scorecard ranking crop and market combinations, modelled on the ITC Export Potential Map.",
-      stack: ["Excel", "Scoring model", "Market analysis"],
-      roles: [], under: ["Export Connect"] },
+      desc: "In-Excel weighted scorecard with rating rules and confidence scores, ranking 192 crop–market combinations (16 crops, 15 markets) for a national horticulture strategy. Modelled on the ITC Export Potential Map.",
+      stack: ["Excel", "Scoring model", "Looker Studio"],
+      roles: ["role-export-connect"], under: [] },
     { id: "tool-capred", kind: "Tool", tag: "Market research", title: "Specialty Importers Long List",
       desc: "Long list and shortlist of specialty Asian importers and distributors in Australia for the CAPRED project (Cambodia Australia Partnership for Resilient Economic Development).",
       stack: ["Desk research", "Shortlisting", "Exporter outreach"],
-      roles: [], under: ["Export Connect", "CAPRED"] },
+      roles: ["role-export-connect"], under: ["CAPRED"] },
     { id: "tool-finance-session", kind: "Tool", tag: "Enablement", title: "Understanding Export Finances",
       desc: "Webinar for exporters on cash flow, working capital and financial readiness, grounded in Austrade guidance.",
       stack: ["Facilitation", "Export finance"],
-      roles: [], under: ["Export Connect"] },
+      roles: ["role-export-connect"], under: [] },
     { id: "tool-evaluation", kind: "Tool", tag: "Framework", title: "Competency-Based Evaluation Framework",
       desc: "Evaluation system for 180 Degrees Consulting UTS aligned to club KPIs, enabling data-driven talent decisions.",
       stack: ["KPIs", "Process design", "People analytics"],
@@ -96,10 +103,10 @@ window.SITE_DATA = {
   /* LINKS: roles = ids from "roles" above, work = ids from "work" above,
      under = plain-text labels for sources that are not a role (a degree, a certificate...). */
   capabilities: [
-    { t: "Structured problem-solving", d: "Ambiguous briefs turned into scoped, testable deliverables.", roles: ["role-180dc", "role-foruppo"], work: ["tool-capred"] },
-    { t: "Data-driven decisions", d: "Evidence-led recommendations built on analytics tooling.", roles: ["role-180dc"], work: ["tool-export-potential", "tool-evaluation"] },
+    { t: "Structured problem-solving", d: "Ambiguous briefs turned into scoped, testable deliverables.", roles: ["role-export-connect", "role-180dc", "role-foruppo"], work: ["tool-capred"] },
+    { t: "Data-driven decisions", d: "Evidence-led recommendations built on analytics tooling.", roles: ["role-export-connect", "role-180dc"], work: ["tool-export-potential", "tool-evaluation"] },
     { t: "Process design", d: "Workflows and onboarding that scale and survive hand-overs.", roles: ["role-180dc", "role-wizoona"], work: ["tool-evaluation"] },
-    { t: "Stakeholder engagement", d: "Senior leadership, universities and cross-functional teams.", roles: ["role-180dc", "role-wizoona"], work: ["tool-finance-session"] },
+    { t: "Stakeholder engagement", d: "Senior leadership, universities and cross-functional teams.", roles: ["role-export-connect", "role-180dc", "role-wizoona"], work: ["tool-finance-session"] },
     { t: "Agile delivery", d: "Sprints, charters, OKRs and WBS; Google PM certified.", roles: ["role-foruppo"], work: ["proj-plant-pals", "proj-career-crafter"] },
     { t: "Change & risk", d: "Leadership transitions, team scaling and run-sheet discipline.", roles: ["role-wizoona"], work: ["proj-tedx"] }
   ],
@@ -108,9 +115,10 @@ window.SITE_DATA = {
     { t: "SQL", under: ["MBAn, UTS"] },
     { t: "Power BI", under: ["MBAn, UTS"] },
     { t: "Tableau", under: ["MBAn, UTS"] },
-    { t: "Excel (Advanced / Pivot)", work: ["tool-export-potential"], under: ["MBAn, UTS"] },
+    { t: "Looker Studio", roles: ["role-export-connect"] },
+    { t: "Excel (Advanced / Pivot Tables)", work: ["tool-export-potential"], under: ["MBAn, UTS"] },
     { t: "Google Suite", roles: ["role-foruppo"], under: ["Google PM Certificate"] },
-    { t: "Microsoft Office", roles: ["role-180dc"] },
+    { t: "Microsoft Office Suite", roles: ["role-180dc"] },
     { t: "AI tools & agents", work: ["tool-linkedin", "proj-debate"] }
   ],
 
@@ -123,8 +131,8 @@ window.SITE_DATA = {
 
 
   education: [
-    { t: "Master of Business Analytics", s: "University of Technology Sydney", img: "edu-uts.webp", d: "Feb 2025 – Dec 2026", n: "GPA 6.0 / 7.0 · Business Analytics, Data-Driven Decision Making, Strategic Management" },
-    { t: "BTech, Computer Science Engineering", s: "Rajiv Gandhi Institute of Technology, India", img: "edu-rit.jpeg", d: "Oct 2020 – Jun 2024", n: "GPA 7.86 / 10 · First Class" }
+    { t: "Master of Business Analytics", s: "University of Technology Sydney", img: "edu-uts.webp", d: "Feb 2025 – Dec 2026 (expected)", n: "GPA 6.0 / 7.0 (current) · Business Analytics, Data-Driven Decision Making, Strategic Management" },
+    { t: "BTech, Computer Science Engineering", s: "Rajiv Gandhi Institute of Technology, India", img: "edu-rit.jpeg", d: "Oct 2020 – Jun 2024", n: "GPA 7.86 / 10 · First Class · Data Structures, Systems Thinking, Information Management" }
   ],
   certs: [
     ["Agile Project Management", "Google", "95.50%"],
@@ -132,6 +140,7 @@ window.SITE_DATA = {
     ["Project Execution: Running the Project", "Google", "96.48%"],
     ["Project Initiation: Starting a Successful Project", "Google", "99.45%"],
     ["Foundations of Project Management", "Google", "91.53%"],
+    ["NPTEL: Project Management", "NPTEL", "60%"],
     ["WIL to Work Program 2025", "UTS Careers", ""]
   ]
 };
