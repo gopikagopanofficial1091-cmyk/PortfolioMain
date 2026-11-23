@@ -17,7 +17,7 @@
 window.SITE_DATA = {
   name: "Gopika Gopan",
   email: "gopikagopan.1091@gmail.com",
-  linkedin: "https://www.linkedin.com/in/YOUR-HANDLE", // <- replace
+  linkedin: "https://www.linkedin.com/in/gopikagopan1091",
   resume: "",                                           // <- link/path to your PDF (optional)
   location: "Sydney, NSW",
 
