@@ -15,11 +15,9 @@
      images/hero-accent-1.jpg (small hero photo)
    ============================================================ */
 window.SITE_DATA = {
-  name: "Gopika Gopan",
   email: "gopikagopan.1091@gmail.com",
   linkedin: "https://www.linkedin.com/in/gopikagopan1091",
   resume: "",                                           // <- link/path to your PDF (optional)
-  location: "Sydney, NSW",
 
   imageDir: "images/",
   imageExts: ["jpg", "jpeg", "png", "webp", "svg", "gif", "avif"],
