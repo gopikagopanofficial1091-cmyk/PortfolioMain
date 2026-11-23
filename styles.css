@@ -161,6 +161,21 @@ h1{font-family:var(--serif);font-weight:900;font-size:clamp(3.4rem,10vw,8.6rem);
 #dots i{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:.4s var(--ease)}
 #dots i.on{width:26px;border-radius:6px;background:var(--orange)}
 
+/* navigation guidance */
+.nextcue{position:fixed;left:50%;bottom:68px;z-index:19;transform:translate(-50%,16px);opacity:0;visibility:hidden;pointer-events:none;
+  background:var(--purple);color:#fff;border:1.5px solid var(--ink);border-radius:14px;padding:8px 22px 9px;font-size:.92rem;font-weight:600;line-height:1.25;
+  box-shadow:4px 4px 0 var(--yellow);transition:opacity .4s,transform .5s var(--ease),visibility 0s .4s;display:flex;flex-direction:column;align-items:center}
+.nextcue small{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;opacity:.8}
+.nextcue.on{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0);transition-delay:0s}
+.nextcue:hover{box-shadow:6px 6px 0 var(--yellow)}
+.nextcue span{display:inline-block;animation:nudge 1.2s ease-in-out infinite}
+.navhint{position:fixed;left:50%;bottom:72px;z-index:19;transform:translate(-50%,12px);opacity:0;visibility:hidden;cursor:pointer;
+  background:#fff;border:1.5px solid var(--ink);border-radius:99px;padding:8px 18px;font-size:.82rem;color:var(--ink);white-space:nowrap;
+  box-shadow:3px 3px 0 var(--yellow);transition:opacity .5s,transform .5s var(--ease),visibility 0s .5s}
+.navhint.on{opacity:1;visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+.navhint b{display:inline-block;min-width:1.5em;text-align:center;padding:0 4px;border:1px solid var(--ink);border-radius:5px;background:var(--butter);font-size:.78rem}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+
 /* detail pop-up */
 .veil{position:fixed;inset:0;background:rgba(31,26,43,.45);display:grid;place-items:center;opacity:0;visibility:hidden;transition:.35s;z-index:50}
 .veil.on{opacity:1;visibility:visible}
@@ -203,4 +218,4 @@ h1{font-family:var(--serif);font-weight:900;font-size:clamp(3.4rem,10vw,8.6rem);
 @media(max-width:700px){ /* phones: one block per line, otherwise text is unreadable */
   .g3>*{flex-basis:100%}
 }
-@media(prefers-reduced-motion:reduce){*{transition-duration:.01s!important;transition-delay:0s!important}.fl{animation:none}}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01s!important;transition-delay:0s!important}.fl,.nextcue span{animation:none}}
