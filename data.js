@@ -19,7 +19,7 @@ window.SITE_DATA = {
   linkedin: "https://www.linkedin.com/in/gopikagopan1091",
   resume: "",                                           // <- link/path to your PDF (optional)
 
-  hero: { now: ["Right now", "VP Operations", "180 Degrees Consulting, UTS"] },  // text in the small home-page box (shown until images/hero-accent-1.jpg exists)
+  hero: { now: ["Currently", "Graduate", "M. Business Analytics, UTS"] },  // text in the small home-page box (shown until images/hero-accent-1.jpg exists)
 
   imageDir: "images/",
   imageExts: ["jpg", "jpeg", "png", "webp", "svg", "gif", "avif"],
