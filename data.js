@@ -1,84 +1,85 @@
 /* ============================================================
-   EDIT ME — all content + image links live here.
-   Images: paste a PUBLIC Google Drive share link
-   (Anyone with the link → Viewer). Leave "" to show the empty frame.
+   EDIT ME — all text content lives here.
+
+   IMAGES: put files in the /images folder of the repo and name them
+   after the item's "id":   <id>-1.jpg, <id>-2.jpg, <id>-3.jpg ...
+   Add as many (or as few, or none) as you like. Numbers must be
+   consecutive (1, 2, 3 ...): the site stops at the first missing one.
+   Use lowercase extensions. Allowed: see imageExts below.
+
+   Examples
+     images/role-180dc-1.jpg  images/role-180dc-2.png
+     images/tool-capred-1.webp
+     images/proj-tedx-1.jpg … images/proj-tedx-6.jpg
+     images/profile-1.jpg     (hero portrait)
+     images/hero-accent-1.jpg (small hero photo)
    ============================================================ */
 window.SITE_DATA = {
   name: "Gopika Gopan",
   email: "gopikagopan.1091@gmail.com",
-  linkedin: "https://www.linkedin.com/in/gopikagopan1091/", 
-  resume: "",                                           // <- public Drive link to your PDF (optional)
+  linkedin: "https://www.linkedin.com/in/YOUR-HANDLE", // <- replace
+  resume: "",                                           // <- link/path to your PDF (optional)
   location: "Sydney, NSW",
 
-  images: {
-    "profile": "",          // hero portrait (tall, ~4:5)
-    "hero-accent": "",      // small secondary photo on hero (square-ish)
-
-    "role-180dc": "",
-    "role-wizoona": "",
-    "role-foruppo": "",
-    "role-notetaking": "",
-    "role-revertech": "",
-
-    "tool-linkedin": "",
-    "tool-export-potential": "",
-    "tool-capred": "",
-    "tool-finance-session": "",
-    "tool-evaluation": "",
-
-    "proj-tedx": "",
-    "proj-career-crafter": "",
-    "proj-plant-pals": "",
-    "proj-debate": ""
-  },
+  imageDir: "images/",
+  imageExts: ["jpg", "jpeg", "png", "webp", "svg", "gif", "avif"],
+  imageMax: 12, // most images the site will look for per item
 
   roles: [
-    { img: "role-180dc", dates: "Jun 2025 – Present", title: "Vice President", org: "180 Degrees Consulting, UTS",
+    { id: "role-180dc", color: "#f7c948", dates: "Jun 2025 – Present", title: "Vice President", org: "180 Degrees Consulting, UTS",
+      tags: ["Process design", "KPIs", "Leadership"],
       points: ["Redesigned end-to-end workflows across a 20+ member consulting club, cutting analyst ramp-up time.",
                "Built a competency-based evaluation framework tied to organisational KPIs.",
-               "Set strategic priorities and delivery benchmarks with senior leadership."] },
-    { img: "role-wizoona", dates: "May 2024 – Mar 2025", title: "President & Co-Founder", org: "Wizoona · Community startup",
+               "Set strategic priorities and delivery benchmarks with senior leadership."],
+      skills: ["Process design", "KPIs", "Stakeholder management", "People analytics"] },
+    { id: "role-wizoona", color: "#b79be0", dates: "May 2024 – Mar 2025", title: "President & Co-Founder", org: "Wizoona · Community startup",
+      tags: ["Founding", "Partnerships", "Scaling"],
       points: ["Scaled a non-profit to 60+ members across two streams within one month.",
                "Secured partnerships with two premier Indian universities in Year 1.",
-               "Shipped a website and standardised onboarding for seamless leadership transitions."] },
-    { img: "role-foruppo", dates: "Dec 2023 – Nov 2024", title: "Project Management Intern → Cohort Lead", org: "Foruppo",
+               "Shipped a website and standardised onboarding for seamless leadership transitions."],
+      skills: ["Founding", "Partnerships", "Community building", "Onboarding design"] },
+    { id: "role-foruppo", color: "#f6a56b", dates: "Dec 2023 – Nov 2024", title: "Project Management Intern → Cohort Lead", org: "Foruppo",
+      tags: ["Agile", "MVPs", "Team culture"],
       points: ["Delivered multiple product MVPs in 2-week Agile sprints.",
-               "Promoted twice in three months to lead team processes, culture and workflows."] },
-    { img: "role-notetaking", dates: "Feb 2026 – Present", title: "Notetaking Assistant", org: "UTS Accessibility Support Program",
-      points: ["Produces clear, accessible course notes for three students, matched to individual learning needs."] },
-    { img: "role-revertech", dates: "Sep – Dec 2021", title: "Marketing Intern", org: "Revertech IT Solutions",
-      points: ["Helped plan and run 5+ digital campaigns in a 20-member team, driving 20+ enrolments."] }
+               "Promoted twice in three months to lead team processes, culture and workflows."],
+      skills: ["Agile / sprints", "Product MVPs", "Team leadership"] },
+    { id: "role-notetaking", color: "#f7c948", dates: "Feb 2026 – Present", title: "Notetaking Assistant", org: "UTS Accessibility Support Program",
+      tags: ["Accessibility", "Clarity"],
+      points: ["Produces clear, accessible course notes for three students, matched to individual learning needs."],
+      skills: ["Accessibility", "Structured writing", "Reliability"] },
+    { id: "role-revertech", color: "#b79be0", dates: "Sep – Dec 2021", title: "Marketing Intern", org: "Revertech IT Solutions",
+      tags: ["Campaigns", "Digital marketing"],
+      points: ["Helped plan and run 5+ digital campaigns in a 20-member team, driving 20+ enrolments."],
+      skills: ["Digital campaigns", "Teamwork", "Content"] }
   ],
 
-  tools: [
-    { img: "tool-linkedin", tag: "Web app", title: "LinkedIn Content Generator",
+  /* Tools and independent projects, merged. kind: "Tool" or "Project" (drives the filter). */
+  work: [
+    { id: "tool-linkedin", kind: "Tool", tag: "Web app", title: "LinkedIn Content Generator",
       desc: "Generates Export Connect LinkedIn posts with live research, a voice picker and carousel slide-count control, paired with a Canva carousel template.",
       stack: ["Web app", "Live research", "Canva"] },
-    { img: "tool-export-potential", tag: "Excel model", title: "Export Potential Predictor",
+    { id: "tool-export-potential", kind: "Tool", tag: "Excel model", title: "Export Potential Predictor",
       desc: "In-Excel scorecard ranking crop and market combinations, modelled on the ITC Export Potential Map.",
       stack: ["Excel", "Scoring model", "Market analysis"] },
-    { img: "tool-capred", tag: "Market research", title: "Specialty Importers Long List",
+    { id: "tool-capred", kind: "Tool", tag: "Market research", title: "Specialty Importers Long List",
       desc: "Long list and shortlist of specialty Asian importers and distributors in Australia for the CAPRED project (Cambodia Australia Partnership for Resilient Economic Development).",
       stack: ["Desk research", "Shortlisting", "Exporter outreach"] },
-    { img: "tool-finance-session", tag: "Enablement", title: "Understanding Export Finances",
+    { id: "tool-finance-session", kind: "Tool", tag: "Enablement", title: "Understanding Export Finances",
       desc: "Webinar for exporters on cash flow, working capital and financial readiness, grounded in Austrade guidance.",
       stack: ["Facilitation", "Export finance"] },
-    { img: "tool-evaluation", tag: "Framework", title: "Competency-Based Evaluation Framework",
+    { id: "tool-evaluation", kind: "Tool", tag: "Framework", title: "Competency-Based Evaluation Framework",
       desc: "Evaluation system for 180 Degrees Consulting UTS aligned to club KPIs, enabling data-driven talent decisions.",
-      stack: ["KPIs", "Process design", "People analytics"] }
-  ],
-
-  projects: [
-    { img: "proj-tedx", year: "2022 – 2023", title: "TEDxGECRIT — Inaugural Event",
+      stack: ["KPIs", "Process design", "People analytics"] },
+    { id: "proj-tedx", kind: "Project", tag: "2022 – 2023", title: "TEDxGECRIT — Inaugural Event",
       desc: "Led the institution's first TEDx-licensed event: a 70-member volunteer team, 100+ attendees, 90%+ satisfaction, with full planning frameworks, run sheets and post-event reporting.",
       stack: ["Event leadership", "Documentation", "Volunteer management"] },
-    { img: "proj-debate", year: "2023 – 2024", title: "Debate-Practice Platform",
+    { id: "proj-debate", kind: "Project", tag: "2023 – 2024", title: "Debate-Practice Platform",
       desc: "Led design and build across three products: an AI chatbot (Botpress), a topic resource library (WordPress) and a speaker transcript archive (Framer).",
       stack: ["Botpress", "WordPress", "Framer"] },
-    { img: "proj-career-crafter", year: "Jan – Feb 2024", title: "Career Crafter",
+    { id: "proj-career-crafter", kind: "Project", tag: "Jan – Feb 2024", title: "Career Crafter",
       desc: "Co-built and launched a minimalist digital product site on Product Hunt with a 10-member team, learning positioning and launch strategy.",
       stack: ["Framer", "Product Hunt", "Launch strategy"] },
-    { img: "proj-plant-pals", year: "2023 – 2025", title: "Plant Pals — PM Capstone",
+    { id: "proj-plant-pals", kind: "Project", tag: "2023 – 2025", title: "Plant Pals — PM Capstone",
       desc: "End-to-end project documentation: Project Charter, OKRs, SMART goals and Work Breakdown Structure for Google's accredited PM programme.",
       stack: ["Charter", "OKRs", "WBS"] }
   ],
