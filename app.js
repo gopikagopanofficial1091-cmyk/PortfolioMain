@@ -317,16 +317,23 @@
     return null;
   }
 
-  let acc = 0, accT;
+  /* A page taller than the screen scrolls first; reaching its end never flips the page.
+     A separate, fresh scroll / swipe / key press at the end is needed to move on. */
+  const overflows = () => { const p = panels[cur]; return !!p && p.scrollHeight - p.clientHeight > 4; };
+  let acc = 0, accT, lastWheel = 0, edgeOk = false, lastKey = 0;
   addEventListener('wheel', (e) => {
     if (popOpen()) return;
     const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
     if (!d) return;
+    const now = performance.now(), gap = now - lastWheel;
+    lastWheel = now;
     const hit = inner(e.target, Math.sign(d));
-    if (hit) { if (hit.h) { e.preventDefault(); hit.el.scrollLeft += d; } return; }
+    if (hit) { edgeOk = false; if (hit.h) { e.preventDefault(); hit.el.scrollLeft += d; } return; }
     e.preventDefault();
+    if (gap > 380) edgeOk = true;            // a new gesture started while at the page edge
+    if (overflows() && !edgeOk) { acc = 0; return; } // still the same gesture / inertia that reached the end
     acc += d; clearTimeout(accT); accT = setTimeout(() => (acc = 0), 160);
-    if (Math.abs(acc) > 60) { go(cur + Math.sign(acc)); acc = 0; }
+    if (Math.abs(acc) > 60) { go(cur + Math.sign(acc)); acc = 0; edgeOk = false; }
   }, { passive: false });
 
   addEventListener('keydown', (e) => {
@@ -338,13 +345,22 @@
       else if (k === 'ArrowLeft') { e.preventDefault(); goPop(-1); }
       return;
     }
+    const vert = { ArrowDown: 1, PageDown: 1, ' ': 1, ArrowUp: -1, PageUp: -1 }[k];
+    if (vert && overflows()) {
+      const p = panels[cur], atEnd = vert > 0 ? p.scrollTop >= p.scrollHeight - p.clientHeight - 2 : p.scrollTop <= 2;
+      e.preventDefault();
+      const now = performance.now();
+      if (!atEnd) { p.scrollBy({ top: vert * (k === 'ArrowDown' || k === 'ArrowUp' ? 90 : p.clientHeight * .8), behavior: 'smooth' }); lastKey = now; return; }
+      if (e.repeat || now - lastKey < 450) { lastKey = now; return; } // extra, separate press needed at the end
+      lastKey = now; go(cur + vert); return;
+    }
     if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(k)) { e.preventDefault(); go(cur + 1); }
     else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(k)) { e.preventDefault(); go(cur - 1); }
     else if (k === 'Home') go(0); else if (k === 'End') go(N - 1);
   });
 
-  let tx, ty, tt;
-  addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt = e.target; }, { passive: true });
+  let tx, ty, tt, tTop = 0;
+  addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt = e.target; tTop = panels[cur] ? panels[cur].scrollTop : 0; }, { passive: true });
   addEventListener('touchend', (e) => {
     if (popOpen()) return;
     const dx = tx - e.changedTouches[0].clientX, dy = ty - e.changedTouches[0].clientY;
@@ -353,6 +369,7 @@
     if (Math.abs(d) < 60) return;
     if (horiz && tt.closest && tt.closest('.hscroll')) return; // native sideways scroll
     if (!horiz && inner(tt, Math.sign(d))) return;
+    if (!horiz && overflows() && Math.abs(panels[cur].scrollTop - tTop) > 2) return; // this swipe was scrolling the page; swipe again to move on
     go(cur + Math.sign(d));
   }, { passive: true });
 
