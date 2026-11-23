@@ -17,7 +17,7 @@
 window.SITE_DATA = {
   email: "gopikagopan.1091@gmail.com",
   linkedin: "https://www.linkedin.com/in/gopikagopan1091",
-  resume: "Resume.pdf",                                           // <- link/path to your PDF (optional)
+  resume: "Resume_GopikaGopan_21_11_26.pdf",                                           // <- link/path to your PDF (optional)
 
   hero: { now: ["Seeking", "Graduate Consultant", "M. Business Analytics, UTS"] },  // text in the small home-page box (shown until images/hero-accent-1.jpg exists)
 
