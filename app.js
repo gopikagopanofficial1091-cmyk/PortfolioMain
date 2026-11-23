@@ -117,7 +117,7 @@
     `<div class="tile" data-open="skills:${c.id}" style="--i:${i}"><b>${c.title}</b><small>${c.desc}</small>` +
     ((c.roleIds.length || c.under.length) ? `<div class="chips from"><em>From</em>${pick('roles', c.roleIds).map(lc).join('')}${plain(c.under)}</div>` : '') + `</div>`).join('');
   $('#edu').innerHTML = D.education.map((e, i) =>
-    `<div class="blk edu fly" style="--i:${i + 1}"><span class="dt">${e.d}</span><h3>${e.t}</h3><div class="s">${e.s}</div><p>${e.n}</p></div>`).join('');
+    `<div class="blk edu fly" style="--i:${i + 1}">${e.img ? `<div class="edu-img"><img src="images/${e.img}" alt="${e.s}" loading="lazy" onerror="this.parentNode.remove()"></div>` : ''}<span class="dt">${e.d}</span><h3>${e.t}</h3><div class="s">${e.s}</div><p>${e.n}</p></div>`).join('');
   $('#certs').innerHTML = D.certs.map((c, i) =>
     `<div class="blk cert fly" style="--i:${i + 3}"><span class="dt">${c[1]}</span><h3>${c[0]}</h3>${c[2] ? `<b>${c[2]}</b>` : ''}</div>`).join('');
   $('#c-mail').href = 'mailto:' + D.email;
