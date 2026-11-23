@@ -123,8 +123,8 @@ window.SITE_DATA = {
 
 
   education: [
-    { t: "Master of Business Analytics", s: "University of Technology Sydney", d: "Feb 2025 – Dec 2026", n: "GPA 6.0 / 7.0 · Business Analytics, Data-Driven Decision Making, Strategic Management" },
-    { t: "BTech, Computer Science Engineering", s: "Rajiv Gandhi Institute of Technology, India", d: "Oct 2020 – Jun 2024", n: "GPA 7.86 / 10 · First Class" }
+    { t: "Master of Business Analytics", s: "University of Technology Sydney", img: "edu-uts.webp", d: "Feb 2025 – Dec 2026", n: "GPA 6.0 / 7.0 · Business Analytics, Data-Driven Decision Making, Strategic Management" },
+    { t: "BTech, Computer Science Engineering", s: "Rajiv Gandhi Institute of Technology, India", img: "edu-rit.jpeg", d: "Oct 2020 – Jun 2024", n: "GPA 7.86 / 10 · First Class" }
   ],
   certs: [
     ["Agile Project Management", "Google", "95.50%"],
