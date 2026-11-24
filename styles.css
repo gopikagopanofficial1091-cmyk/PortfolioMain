@@ -122,6 +122,7 @@ h1{font-family:var(--serif);font-weight:900;font-size:clamp(3.4rem,10vw,8.6rem);
 .card .chips span{background:var(--butter);border-color:transparent;color:var(--ink)}
 .more{margin-top:auto;padding-top:14px;font-size:.8rem;color:var(--purple);font-weight:600}
 .thumb{width:100%;aspect-ratio:16/10;margin-bottom:8px;border:1.5px solid var(--ink);overflow:hidden;position:relative;background:repeating-linear-gradient(135deg,#faf7ff 0 10px,#f4eefc 10px 20px)}
+.thumb .tl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center;font-family:"Playfair Display",serif;font-weight:800;font-size:1.2rem;color:var(--purple)}
 .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
 
 /* capabilities + credentials blocks */
