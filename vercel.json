@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "src": "^/private(/.*)?$", "status": 404 },
+    { "handle": "filesystem" }
+  ],
+  "functions": {
+    "api/*.js": { "includeFiles": "private/**" }
+  }
+}
