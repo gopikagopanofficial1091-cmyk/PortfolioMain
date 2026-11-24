@@ -101,7 +101,7 @@
     const THUMB = (u) => 'https://image.thum.io/get/width/700/crop/440/noanimate/' + u;
     $('#sites-track').innerHTML = sites.map((s) =>
       `<a class="card site" href="${s.url}" target="_blank" rel="noopener" style="--c:${s.color}">` +
-      `<div class="thumb"><img alt="" loading="lazy" data-id="${s.id}" src="${THUMB(s.url)}"></div>` +
+      `<div class="thumb"><span class="tl">${s.title}</span><img alt="" loading="lazy" data-id="${s.id}" src="${THUMB(s.url)}"></div>` +
       `<h3>${s.title}</h3>${s.desc ? `<p class="d">${s.desc}</p>` : ''}` +
       (s.roleIds.length ? `<p class="via">↳ ${pick('roles', s.roleIds).map((r) => r.short).join(' · ')}</p>` : '') +
       chips(s.tags) + `<span class="more">Visit site ↗</span></a>`).join('');
