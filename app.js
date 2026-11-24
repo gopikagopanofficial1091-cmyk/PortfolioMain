@@ -48,7 +48,7 @@
   }));
   const skills = caps.concat(tools);
   const sites = (D.websites || []).map((s, n) => ({
-    sec: 'sites', id: s.id, url: s.url, title: s.title, desc: s.desc, color: WCOL[n % 3], tags: s.tags || [],
+    sec: 'sites', id: s.id, url: s.url, download: s.download, title: s.title, desc: s.desc, color: WCOL[n % 3], tags: s.tags || [],
     roleIds: s.roles || [], workIds: s.work || []
   }));
   if (!sites.length) $('#websites').remove();
@@ -63,7 +63,7 @@
 
   // one clickable chip per linked item (websites open in a new tab, everything else opens its pop-up)
   const lc = (x) => x.url
-    ? `<a class="lnk" href="${x.url}" target="_blank" rel="noopener">${x.title} ↗</a>`
+    ? `<a class="lnk" href="${x.url}" ${x.download ? 'download' : 'target="_blank" rel="noopener"'}>${x.title} ${x.download ? '↓' : '↗'}</a>`
     : `<button class="lnk" data-open="${x.sec}:${x.id}">${x.short || x.title}</button>`;
   const plain = (a) => a.map((p) => `<span>${p}</span>`).join('');
 
@@ -100,15 +100,18 @@
   if (sites.length) {
     const THUMB = (u) => 'https://image.thum.io/get/width/700/crop/440/noanimate/' + u;
     $('#sites-track').innerHTML = sites.map((s) =>
-      `<a class="card site" href="${s.url}" target="_blank" rel="noopener" style="--c:${s.color}">` +
-      `<div class="thumb"><span class="tl">${s.title}</span><img alt="" loading="lazy" data-id="${s.id}" src="${THUMB(s.url)}"></div>` +
+      `<a class="card site" href="${s.url}" ${s.download ? 'download' : 'target="_blank" rel="noopener"'} style="--c:${s.color}">` +
+      `<div class="thumb"><span class="tl">${s.title}</span>${s.download ? '' : `<img alt="" loading="lazy" data-id="${s.id}" src="${THUMB(s.url)}">`}</div>` +
       `<h3>${s.title}</h3>${s.desc ? `<p class="d">${s.desc}</p>` : ''}` +
       (s.roleIds.length ? `<p class="via">↳ ${pick('roles', s.roleIds).map((r) => r.short).join(' · ')}</p>` : '') +
-      chips(s.tags) + `<span class="more">Visit site ↗</span></a>`).join('');
-    $$('#sites-track .thumb img').forEach(async (im) => {
-      im.onerror = () => im.remove();
-      const u = await findImage('site-' + im.dataset.id.replace(/^site-/, '') + '-1');
-      if (u) im.src = u;
+      chips(s.tags) + `<span class="more">${s.download ? 'Download HTML ↓' : 'Visit site ↗'}</span></a>`).join('');
+    $$('#sites-track .card').forEach(async (card, k) => {
+      const s = sites[k], im = $('.thumb img', card);
+      if (im) im.onerror = () => im.remove();
+      const u = await findImage('site-' + s.id.replace(/^site-/, '') + '-1');
+      if (!u) return;
+      if (im) im.src = u;
+      else { const n = new Image(); n.alt = ''; n.src = u; $('.thumb', card).appendChild(n); }
     });
   }
 
