@@ -54,6 +54,12 @@ window.SITE_DATA = {
       tags: ["Accessibility", "Clarity"],
       points: ["Providing structured academic support to three students, producing clear and accessible course notes aligned to individual learning needs."],
       skills: ["Accessibility", "Structured writing", "Reliability"] },
+    { id: "role-tedx", color: "#f6a56b", dates: "2022 – 2023", short: "TEDxGECRIT", title: "Lead Organiser", org: "TEDxGECRIT · Rajiv Gandhi Institute of Technology",
+      tags: ["Event leadership", "Documentation", "Volunteer management"],
+      points: ["Led the institution's first TEDx-licensed event, managing a 70-member volunteer team from licensing through to delivery.",
+               "Hosted 100+ attendees with 90%+ satisfaction.",
+               "Produced full planning frameworks, run sheets and post-event reporting."],
+      skills: ["Event leadership", "Documentation", "Volunteer management"] },
     { id: "role-revertech", color: "#b79be0", dates: "Sep – Dec 2021", short: "Revertech", title: "Marketing Intern", org: "Revertech IT Solutions Pvt. Ltd",
       tags: ["Campaigns", "Digital marketing"],
       points: ["Contributed to planning and execution of 5+ digital marketing campaigns within a 20-member team, driving enrolment of 20+ students into the company's flagship program."],
@@ -82,10 +88,6 @@ window.SITE_DATA = {
       desc: "Evaluation system for 180 Degrees Consulting UTS aligned to club KPIs, enabling data-driven talent decisions.",
       stack: ["KPIs", "Process design", "People analytics"],
       roles: ["role-180dc"], under: [] },
-    { id: "proj-tedx", kind: "Project", tag: "2022 – 2023", title: "TEDxGECRIT — Inaugural Event",
-      desc: "Led the institution's first TEDx-licensed event: a 70-member volunteer team, 100+ attendees, 90%+ satisfaction, with full planning frameworks, run sheets and post-event reporting.",
-      stack: ["Event leadership", "Documentation", "Volunteer management"],
-      roles: [], under: ["BTech, RIT"] },
     { id: "proj-debate", kind: "Project", tag: "2023 – 2024", title: "Debate-Practice Platform",
       desc: "Led design and build across three products: an AI chatbot (Botpress), a topic resource library (WordPress) and a speaker transcript archive (Framer).",
       stack: ["Botpress", "WordPress", "Framer"],
@@ -108,7 +110,7 @@ window.SITE_DATA = {
     { t: "Process design", d: "Workflows and onboarding that scale and survive hand-overs.", roles: ["role-180dc", "role-wizoona"], work: ["tool-evaluation"] },
     { t: "Stakeholder engagement", d: "Senior leadership, universities and cross-functional teams.", roles: ["role-export-connect", "role-180dc", "role-wizoona"], work: ["tool-finance-session"] },
     { t: "Agile delivery", d: "Sprints, charters, OKRs and WBS; Google PM certified.", roles: ["role-foruppo"], work: ["proj-plant-pals", "proj-career-crafter"] },
-    { t: "Change & risk", d: "Leadership transitions, team scaling and run-sheet discipline.", roles: ["role-wizoona"], work: ["proj-tedx"] }
+    { t: "Change & risk", d: "Leadership transitions, team scaling and run-sheet discipline.", roles: ["role-wizoona", "role-tedx"], work: [] }
   ],
   toolkit: [
     { t: "Python", under: ["MBAn, UTS"] },
@@ -127,7 +129,27 @@ window.SITE_DATA = {
      Example:
      { id: "site-wizoona", title: "Wizoona", url: "https://...", desc: "Community website I shipped as co-founder.",
        roles: ["role-wizoona"], work: [], tags: ["Website", "Community"] } */
-  websites: [],
+  websites: [
+    // Foruppo
+    { id: "site-career-crafter", title: "Career Crafter", url: "https://lnkd.in/g5e5Eukm", desc: "Minimalist career product site, co-built with a 10-member team during my Foruppo internship.",
+      roles: ["role-foruppo"], work: ["proj-career-crafter"], tags: ["Website", "Foruppo"] },
+    { id: "site-debatify", title: "Debatify", url: "https://lnkd.in/gUiE8x5D", desc: "Debate-practice website built at Foruppo in 2-week Agile sprints.",
+      roles: ["role-foruppo"], work: ["proj-debate"], tags: ["Website", "Foruppo"] },
+    { id: "site-quibate", title: "Quibate", url: "https://lnkd.in/gtXN4asU", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
+      roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] },
+    { id: "site-voicebox", title: "VoiceBox", url: "https://lnkd.in/gZsycafQ", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
+      roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] },
+    // TEDxGECRIT
+    { id: "site-tedxgecrit", title: "TEDxGECRIT", url: "https://tedxgecrit.vercel.app/", desc: "Official event website for the institution's first TEDx-licensed event.",
+      roles: ["role-tedx"], work: [], tags: ["Website", "Event"] },
+    { id: "site-tedx-event", title: "TEDxGECRIT on TED.com", url: "https://www.ted.com/tedx/events/54285", desc: "The event's official listing on the TEDx platform.",
+      roles: ["role-tedx"], work: [], tags: ["TEDx", "Event"] },
+    // Export Connect
+    { id: "site-linkedin-generator", title: "LinkedIn Content Generator", url: "https://claude.ai/artifact/WwyfYiGsqz1xUXdAR3nd92", desc: "Live web app that generates Export Connect LinkedIn posts, built as a Claude artifact.",
+      roles: ["role-export-connect"], work: ["tool-linkedin"], tags: ["Web app", "Claude artifact"] },
+    { id: "site-export-dashboard", title: "Export Markets Dashboard", url: "https://datastudio.google.com/s/nf7FoOGAx7E", desc: "Looker Studio dashboard ranking export markets for a national horticulture strategy.",
+      roles: ["role-export-connect"], work: ["tool-export-potential"], tags: ["Looker Studio", "Dashboard"] }
+  ],
 
 
   education: [
