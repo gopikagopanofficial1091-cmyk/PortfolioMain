@@ -131,13 +131,13 @@ window.SITE_DATA = {
        roles: ["role-wizoona"], work: [], tags: ["Website", "Community"] } */
   websites: [
     // Foruppo
-    { id: "site-career-crafter", title: "Career Crafter", url: "https://lnkd.in/g5e5Eukm", desc: "Minimalist career product site, co-built with a 10-member team during my Foruppo internship.",
+    { id: "site-career-crafter", title: "Career Crafter", url: "https://careercrafter1.wordpress.com", desc: "Minimalist career product site, co-built with a 10-member team during my Foruppo internship.",
       roles: ["role-foruppo"], work: ["proj-career-crafter"], tags: ["Website", "Foruppo"] },
-    { id: "site-debatify", title: "Debatify", url: "https://lnkd.in/gUiE8x5D", desc: "Debate-practice website built at Foruppo in 2-week Agile sprints.",
+    { id: "site-debatify", title: "Debatify", url: "https://debatify.framer.website", desc: "Debate-practice website built at Foruppo in 2-week Agile sprints.",
       roles: ["role-foruppo"], work: ["proj-debate"], tags: ["Website", "Foruppo"] },
-    { id: "site-quibate", title: "Quibate", url: "https://lnkd.in/gtXN4asU", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
+    { id: "site-quibate", title: "Quibate", url: "https://quibate.webflow.io", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
       roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] },
-    { id: "site-voicebox", title: "VoiceBox", url: "https://lnkd.in/gZsycafQ", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
+    { id: "site-voicebox", title: "VoiceBox", url: "https://voicebox.framer.website", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
       roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] },
     // TEDxGECRIT
     { id: "site-tedxgecrit", title: "TEDxGECRIT", url: "https://tedxgecrit.vercel.app/", desc: "Official event website for the institution's first TEDx-licensed event.",
