@@ -54,7 +54,7 @@ window.SITE_DATA = {
       tags: ["Accessibility", "Clarity"],
       points: ["Providing structured academic support to three students, producing clear and accessible course notes aligned to individual learning needs."],
       skills: ["Accessibility", "Structured writing", "Reliability"] },
-    { id: "role-tedx", color: "#f6a56b", dates: "2022 – 2023", short: "TEDxGECRIT", title: "Lead Organiser", org: "TEDxGECRIT · Rajiv Gandhi Institute of Technology",
+    { id: "role-tedx", color: "#f6a56b", dates: "2022 – 2023", short: "TEDxGECRIT", title: "TEDx Core Organiser", org: "TEDxGECRIT 2023 · Rajiv Gandhi Institute of Technology",
       tags: ["Event leadership", "Documentation", "Volunteer management"],
       points: ["Led the institution's first TEDx-licensed event, managing a 70-member volunteer team from licensing through to delivery.",
                "Hosted 100+ attendees with 90%+ satisfaction.",
