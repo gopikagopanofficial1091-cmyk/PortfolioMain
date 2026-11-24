@@ -145,8 +145,9 @@ window.SITE_DATA = {
     { id: "site-tedx-event", title: "TEDxGECRIT on TED.com", url: "https://www.ted.com/tedx/events/54285", desc: "The event's official listing on the TEDx platform.",
       roles: ["role-tedx"], work: [], tags: ["TEDx", "Event"] },
     // Export Connect
-    { id: "site-linkedin-generator", title: "LinkedIn Content Generator", url: "https://claude.ai/artifact/WwyfYiGsqz1xUXdAR3nd92", desc: "Live web app that generates Export Connect LinkedIn posts, built as a Claude artifact.",
-      roles: ["role-export-connect"], work: ["tool-linkedin"], tags: ["Web app", "Claude artifact"] },
+    { id: "site-linkedin-generator", title: "Export Connect Post Studio", url: "downloads/Export_Connect_Post_Studio.html", download: true,
+      desc: "LinkedIn post and carousel studio for Export Connect. Download the HTML, paste it into your own Claude chat and ask it to run it as an artifact.",
+      roles: ["role-export-connect"], work: ["tool-linkedin"], tags: ["Web app", "Download"] },
     { id: "site-export-dashboard", title: "Export Markets Dashboard", url: "https://datastudio.google.com/s/nf7FoOGAx7E", desc: "Looker Studio dashboard ranking export markets for a national horticulture strategy.",
       roles: ["role-export-connect"], work: ["tool-export-potential"], tags: ["Looker Studio", "Dashboard"] }
   ],
