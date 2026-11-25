@@ -7,7 +7,6 @@ Projects & tools (websites included): each item in work: [] can have url (live l
 Thumbnail order: thumb (file in /images or https URL) -> images/<id>-1 -> automatic screenshot of url -> title tile.
 Photos: images/profile-1.jpg (hero), images/hero-accent-1.jpg (small hero box, optional).
 
-TEDx is now a role (id role-tedx): images/role-tedx-1.jpg, -2, -3 ...
 To override a thumbnail, set thumb: "your-file.png" in data.js, or add images/<id>-1.jpg (e.g. images/proj-quibate-1.jpg).
 
 PROTECTED DOWNLOADS (Résumé + Export Connect Post Studio)
