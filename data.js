@@ -63,7 +63,11 @@ window.SITE_DATA = {
     { id: "role-revertech", color: "#b79be0", dates: "Sep – Dec 2021", short: "Revertech", title: "Marketing Intern", org: "Revertech IT Solutions Pvt. Ltd",
       tags: ["Campaigns", "Digital marketing"],
       points: ["Contributed to planning and execution of 5+ digital marketing campaigns within a 20-member team, driving enrolment of 20+ students into the company's flagship program."],
-      skills: ["Digital campaigns", "Teamwork", "Content"] }
+      skills: ["Digital campaigns", "Teamwork", "Content"] },
+    { id: "role-mad", color: "#f7b483", dates: "June 2021 – July 2022", short: "MAD", title: "Academic Tutor", org: "Make a Difference",
+      tags: ["Tutor", "Support Volunteer", "Documentation"],
+      points: ["Developed materials for support tutoring as part of the MAD initiative in India across shelter homes and students between the age of 5 and 18."],
+      skills: ["Tutoring", "Documentation and Slide Making", "Class Planning and material preps"] }
   ],
 
   /* Tools and independent projects, merged. kind: "Tool" or "Project" (drives the filter). */
