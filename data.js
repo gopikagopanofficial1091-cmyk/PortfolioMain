@@ -126,6 +126,19 @@ window.SITE_DATA = {
      { id: "site-wizoona", title: "Wizoona", url: "https://...", desc: "Community website I shipped as co-founder.",
        roles: ["role-wizoona"], work: [], tags: ["Website", "Community"] } */
   websites: [
+     // Export Connect
+    { id: "site-linkedin-generator", title: "Export Connect Post Studio", protect: "studio",
+      desc: "LinkedIn post and carousel studio for Export Connect, shared with the company's permission. Request a one-time code from me to download the HTML, then paste it into your own Claude chat and ask it to run it as an artifact.",
+      roles: ["role-export-connect"], work: ["tool-linkedin"], tags: ["Web app", "Download"] },
+    { id: "site-export-dashboard", title: "Export Markets Dashboard", url: "https://datastudio.google.com/s/nf7FoOGAx7E", desc: "Looker Studio dashboard ranking export markets for a national horticulture strategy.",
+      roles: ["role-export-connect"], work: ["tool-export-potential"], tags: ["Looker Studio", "Dashboard"] },
+
+     // TEDxGECRIT
+    { id: "site-tedxgecrit", title: "TEDxGECRIT", url: "https://tedxgecrit.vercel.app/", desc: "Official event website for the institution's first TEDx-licensed event.",
+      roles: ["role-tedx"], work: [], tags: ["Website", "Event"] },
+    { id: "site-tedx-event", title: "TEDxGECRIT on TED.com", url: "https://www.ted.com/tedx/events/54285", desc: "The event's official listing on the TEDx platform.",
+      roles: ["role-tedx"], work: [], tags: ["TEDx", "Event"] },
+     
     // Foruppo
     { id: "site-career-crafter", title: "Career Crafter", url: "https://careercrafter1.wordpress.com", thumb: "mshots", desc: "Minimalist career product site, co-built with a 10-member team during my Foruppo internship.",
       roles: ["role-foruppo"], work: ["proj-career-crafter"], tags: ["Website", "Foruppo"] },
@@ -134,18 +147,7 @@ window.SITE_DATA = {
     { id: "site-quibate", title: "Quibate", url: "https://quibate.webflow.io", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
       roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] },
     { id: "site-voicebox", title: "VoiceBox", url: "https://voicebox.framer.website", desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
-      roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] },
-    // TEDxGECRIT
-    { id: "site-tedxgecrit", title: "TEDxGECRIT", url: "https://tedxgecrit.vercel.app/", desc: "Official event website for the institution's first TEDx-licensed event.",
-      roles: ["role-tedx"], work: [], tags: ["Website", "Event"] },
-    { id: "site-tedx-event", title: "TEDxGECRIT on TED.com", url: "https://www.ted.com/tedx/events/54285", desc: "The event's official listing on the TEDx platform.",
-      roles: ["role-tedx"], work: [], tags: ["TEDx", "Event"] },
-    // Export Connect
-    { id: "site-linkedin-generator", title: "Export Connect Post Studio", protect: "studio",
-      desc: "LinkedIn post and carousel studio for Export Connect, shared with the company's permission. Request a one-time code from me to download the HTML, then paste it into your own Claude chat and ask it to run it as an artifact.",
-      roles: ["role-export-connect"], work: ["tool-linkedin"], tags: ["Web app", "Download"] },
-    { id: "site-export-dashboard", title: "Export Markets Dashboard", url: "https://datastudio.google.com/s/nf7FoOGAx7E", desc: "Looker Studio dashboard ranking export markets for a national horticulture strategy.",
-      roles: ["role-export-connect"], work: ["tool-export-potential"], tags: ["Looker Studio", "Dashboard"] }
+      roles: ["role-foruppo"], work: [], tags: ["Website", "Foruppo"] }
   ],
 
 
