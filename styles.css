@@ -148,10 +148,12 @@ h1{font-family:var(--serif);font-weight:900;font-size:clamp(3.4rem,10vw,8.6rem);
 .blk .dt{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--orange)}
 .blk .s{color:var(--purple);font-weight:500;font-size:.9rem}
 .blk p{font-size:.82rem;color:var(--muted)}
-.blk.cert{background:var(--butter)}
 .edu-img{width:100%;aspect-ratio:16/10;margin-bottom:8px;border:1.5px solid var(--ink);overflow:hidden;position:relative;background:var(--lilac)}
 .edu-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%}
-.blk.cert b{color:var(--purple);font-family:var(--serif);font-size:1.4rem}
+.text .sites{list-style:none;padding:0;margin:0}
+.text .sites li{margin:0 0 8px;word-break:break-all}
+.text .sites a{color:var(--purple);font-weight:500}
+.text .sites small{color:var(--muted);font-size:.74rem}
 
 /* contact */
 .contact{max-width:900px;margin:0 auto;text-align:center}
