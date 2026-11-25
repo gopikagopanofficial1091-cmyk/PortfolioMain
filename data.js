@@ -1,0 +1,171 @@
+/* ============================================================
+   EDIT ME — all text content lives here.
+
+   IMAGES: put files in the /images folder of the repo and name them
+   after the item's "id":   <id>-1.jpg, <id>-2.jpg, <id>-3.jpg ...
+   Add as many (or as few, or none) as you like. Numbers must be
+   consecutive (1, 2, 3 ...): the site stops at the first missing one.
+   Use lowercase extensions. Allowed: see imageExts below.
+
+   Examples
+     images/role-180dc-1.jpg  images/role-180dc-2.png
+     images/tool-evaluation-1.webp
+     images/proj-tedx-1.jpg … images/proj-tedx-6.jpg
+     images/profile-1.jpg     (hero portrait)
+     images/hero-accent-1.jpg (small hero photo)
+   ============================================================ */
+window.SITE_DATA = {
+  email: "gopikagopan.1091@gmail.com",
+  linkedin: "https://www.linkedin.com/in/gopikagopan1091",
+  resume: "Resume.pdf",                                           // <- set to anything truthy to show the Résumé button; the file itself lives in /private and is released by a one-time code
+
+  hero: { now: ["Seeking", "Graduate Consultant", "M. Business Analytics, UTS"] },  // text in the small home-page box (shown until images/hero-accent-1.jpg exists)
+
+  imageDir: "images/",
+  imageExts: ["jpg", "jpeg", "png", "webp", "svg", "gif", "avif"],
+  imageMax: 12, // most images the site will look for per item
+
+  roles: [
+    { id: "role-export-connect", color: "#ee7c34", dates: "Aug 2026 – Nov 2026", short: "Export Connect", title: "Project Intern", org: "Export Connect · Agri-food export consultancy",
+      tags: ["Market analysis", "Tools Building", "Scorecards and Presentations"],
+      points: ["Ranked export markets for a national horticulture strategy: validated trade data and built a weighted scorecard (the Export Potential Predictor, modelled on the ITC Export Potential Map) with rating rules and confidence scores across 192 crop–market combinations (16 crops, 15 markets), giving a transparent, repeatable ranking colleagues could verify and update.",
+               "Turned the scorecard into a Looker Studio dashboard and plain-language briefing slides for a high-level meeting of 5 stakeholder representatives and company executives, showing where to focus and why.",
+               "Analysed ~5 grower and exporter interviews and 5–10 adjacent-category case studies, managing priorities with MoSCoW, to add primary and secondary evidence and shape the dashboard's focus on market access and feasibility.",
+               "Delivered an exporter webinar, Understanding Export Finances, on cash flow, working capital and financial readiness, grounded in Austrade guidance."],
+      skills: ["Market analysis", "Scoring models", "Looker Studio", "Stakeholder briefing", "Prioritisation (MoSCoW)"] },
+    { id: "role-180dc", color: "#f7c948", dates: "Jun 2025 – September 2026", short: "180DC", title: "Vice President", org: "180 Degrees Consulting, UTS",
+      tags: ["Process design", "KPIs", "Leadership"],
+      points: ["Diagnosed structural inefficiencies across a 20+ member consulting club and redesigned end-to-end workflows, reducing analyst ramp-up time and improving project team readiness across concurrent client engagements.",
+               "Developed and implemented a competency-based evaluation framework aligned to organisational KPIs, enabling data-driven talent decisions and measurable performance improvements across cross-functional teams.",
+               "Collaborated with senior leadership to define strategic priorities, establish performance benchmarks and track delivery outcomes against measurable operational metrics."],
+      skills: ["Process design", "KPIs", "Stakeholder management", "People analytics"] },
+    { id: "role-wizoona", color: "#b79be0", dates: "May 2024 – Mar 2025", short: "Wizoona", title: "President & Co-Founder", org: "Wizoona · Community startup",
+      tags: ["Founding", "Partnerships", "Scaling"],
+      points: ["Founded and scaled a non-profit community to 60+ members across two specialised streams within one month, recruiting exclusively from India's top-ranked engineering and business institutions.",
+               "Secured formal partnerships with two premier Indian universities within Year 1, driving sustained engagement through weekly speaker sessions, fortnightly community events and a curated resource newsletter.",
+               "Deployed an interactive website and standardised onboarding process, enabling rapid team scaling and seamless leadership transitions across a growing cross-institutional network."],
+      skills: ["Founding", "Partnerships", "Community building", "Onboarding design"] },
+    { id: "role-foruppo", color: "#f6a56b", dates: "Dec 2023 – Nov 2024", short: "Foruppo", title: "Project Management Intern → Cohort Lead", org: "Foruppo",
+      tags: ["Agile", "MVPs", "Team culture"],
+      points: ["Delivered multiple product MVPs across 2-week Agile sprints, translating ambiguous briefs into structured deliverables through rapid prototyping and iterative design.",
+               "Led end-to-end design and development of Debatify, a debate-practice platform, across three builds (an AI chatbot in Botpress, a topic resource library in WordPress and a speaker transcript archive in Framer), managing scope, timelines and stakeholder expectations.",
+               "Promoted twice in three months to Cohort Lead, taking ownership of team processes, culture and workflows across multiple concurrent cross-functional project teams."],
+      skills: ["Agile / sprints", "Product MVPs", "Team leadership"] },
+    { id: "role-notetaking", color: "#f7c948", dates: "Feb 2026 – December 2026", short: "UTS Notetaking", title: "Notetaking Assistant", org: "UTS Accessibility Support Program",
+      tags: ["Accessibility", "Clarity"],
+      points: ["Providing structured academic support to three students, producing clear and accessible course notes aligned to individual learning needs."],
+      skills: ["Accessibility", "Structured writing", "Reliability"] },
+    { id: "role-tedx", color: "#f6a56b", dates: "2022 – 2023", short: "TEDxGECRIT", title: "TEDx Core Organiser", org: "TEDxGECRIT 2023 · Rajiv Gandhi Institute of Technology",
+      tags: ["Event leadership", "Documentation", "Volunteer management"],
+      points: ["Led the institution's first TEDx-licensed event, managing a 70-member volunteer team from licensing through to delivery.",
+               "Hosted 100+ attendees with 90%+ satisfaction.",
+               "Produced full planning frameworks, run sheets and post-event reporting."],
+      skills: ["Event leadership", "Documentation", "Volunteer management"] },
+    { id: "role-revertech", color: "#b79be0", dates: "Sep – Dec 2021", short: "Revertech", title: "Marketing Intern", org: "Revertech IT Solutions Pvt. Ltd",
+      tags: ["Campaigns", "Digital marketing"],
+      points: ["Contributed to planning and execution of 5+ digital marketing campaigns within a 20-member team, driving enrolment of 20+ students into the company's flagship program."],
+      skills: ["Digital campaigns", "Teamwork", "Content"] },
+    { id: "role-mad", color: "#f7b483", dates: "June 2021 – July 2022", short: "MAD", title: "Academic Tutor", org: "Make a Difference",
+      tags: ["Tutor", "Support Volunteer", "Documentation"],
+      points: ["Developed materials for support tutoring as part of the MAD initiative in India across shelter homes and students between the age of 5 and 18."],
+      skills: ["Tutoring", "Documentation and Slide Making", "Class Planning and material preps"] }
+  ],
+
+  /* PROJECTS & TOOLS: things I built myself (websites, apps, frameworks).
+     kind      "Tool" or "Project" (drives the filter)
+     url       live link, shown as a button inside the pop-up
+     protect   "studio" = the download is released by request instead of a link
+     cta       optional button label (default "Visit site ↗")
+     thumb     card thumbnail: a file in /images (e.g. "role-180dc-3.jpeg") or a full https:// URL.
+               If left out, the site tries images/<id>-1.<ext>, then an automatic screenshot of url, then a title tile.
+     thumbFit  "contain" for logos and icons (centred, not cropped)
+     shot      "mshots" to prefer the WordPress screenshot service for this url */
+  work: [
+    { id: "tool-linkedin", kind: "Tool", tag: "Web app", title: "Export Connect Post Studio",
+      desc: "LinkedIn post and carousel studio for Export Connect, with live research, a voice picker and carousel slide-count control, plus a Canva carousel template. Shared with the company's permission: request a code from me to download the HTML, then paste it into your own Claude chat and ask it to run it as an artifact.",
+      stack: ["Web app", "Live research", "Canva"],
+      protect: "studio", thumb: "site-linkedin-generator-1.jpg",
+      roles: ["role-export-connect"], under: [] },
+    { id: "tool-export-dashboard", kind: "Tool", tag: "Dashboard", title: "Export Markets Dashboard",
+      desc: "Looker Studio dashboard ranking export markets for a national horticulture strategy.",
+      stack: ["Looker Studio", "Dashboard"],
+      url: "https://datastudio.google.com/s/nf7FoOGAx7E", cta: "Open dashboard ↗", thumb: "role-export-connect-2.png",
+      roles: ["role-export-connect"], under: [] },
+    { id: "tool-evaluation", kind: "Tool", tag: "Framework", title: "Competency-Based Evaluation Framework",
+      desc: "Evaluation system for 180 Degrees Consulting UTS aligned to club KPIs, enabling data-driven talent decisions.",
+      stack: ["KPIs", "Process design", "People analytics"],
+      thumb: "role-180dc-3.jpeg", thumbFit: "contain",
+      roles: ["role-180dc"], under: [] },
+    { id: "proj-debate", kind: "Project", tag: "2023 – 2024", title: "Debatify",
+      desc: "Debate-practice platform I led end to end at Foruppo in 2-week Agile sprints, delivered across three builds: an AI chatbot (Botpress), a topic resource library (WordPress) and a speaker transcript archive (Framer).",
+      stack: ["Botpress", "WordPress", "Framer"],
+      url: "https://debatify.framer.website", shot: "mshots",
+      roles: ["role-foruppo"], under: [] },
+    { id: "proj-career-crafter", kind: "Project", tag: "Jan – Feb 2024", title: "Career Crafter",
+      desc: "Co-built and launched a minimalist career product site on Product Hunt with a 10-member team during my Foruppo internship, learning positioning and launch strategy.",
+      stack: ["Framer", "Product Hunt", "Launch strategy"],
+      url: "https://careercrafter1.wordpress.com", shot: "mshots",
+      roles: ["role-foruppo"], under: [] },
+    { id: "proj-quibate", kind: "Project", tag: "Foruppo MVP", title: "Quibate",
+      desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
+      stack: ["Webflow", "Agile sprints"],
+      url: "https://quibate.webflow.io",
+      roles: ["role-foruppo"], under: [] },
+    { id: "proj-voicebox", kind: "Project", tag: "Foruppo MVP", title: "VoiceBox",
+      desc: "Product MVP website built at Foruppo in 2-week Agile sprints.",
+      stack: ["Framer", "Agile sprints"],
+      url: "https://voicebox.framer.website",
+      roles: ["role-foruppo"], under: [] },
+    { id: "proj-plant-pals", kind: "Project", tag: "2023 – 2025", title: "Plant Pals — PM Capstone",
+      desc: "End-to-end project documentation: Project Charter, OKRs, SMART goals and Work Breakdown Structure for Google's accredited PM programme.",
+      stack: ["Charter", "OKRs", "WBS"],
+      thumb: "https://www.google.com/s2/favicons?domain=google.com&sz=128", thumbFit: "contain",
+      roles: [], under: ["Google PM Certificate"] }
+
+    /* TEDx websites (hidden for now): delete the comment markers to show them.
+    ,{ id: "proj-tedxgecrit", kind: "Project", tag: "2022 – 2023", title: "TEDxGECRIT website",
+      desc: "Official event website for the institution's first TEDx-licensed event.",
+      stack: ["Website", "Event"], url: "https://tedxgecrit.vercel.app/",
+      roles: ["role-tedx"], under: [] },
+    { id: "proj-tedx-listing", kind: "Project", tag: "2022 – 2023", title: "TEDxGECRIT on TED.com",
+      desc: "The event's official listing on the TEDx platform.",
+      stack: ["TEDx", "Event"], url: "https://www.ted.com/tedx/events/54285",
+      roles: ["role-tedx"], under: [] } */
+  ],
+
+  /* LINKS: roles = ids from "roles" above, work = ids from "work" above,
+     under = plain-text labels for sources that are not a role (a degree, a certificate...). */
+  capabilities: [
+    { t: "Structured problem-solving", d: "Ambiguous briefs turned into scoped, testable deliverables.", roles: ["role-export-connect", "role-180dc", "role-foruppo"], work: [] },
+    { t: "Data-driven decisions", d: "Evidence-led recommendations built on analytics tooling.", roles: ["role-export-connect", "role-180dc"], work: ["tool-export-dashboard", "tool-evaluation"] },
+    { t: "Process design", d: "Workflows and onboarding that scale and survive hand-overs.", roles: ["role-180dc", "role-wizoona"], work: ["tool-evaluation"] },
+    { t: "Stakeholder engagement", d: "Senior leadership, universities and cross-functional teams.", roles: ["role-export-connect", "role-180dc", "role-wizoona"], work: [] },
+    { t: "Agile delivery", d: "Sprints, charters, OKRs and WBS; Google PM certified.", roles: ["role-foruppo"], work: ["proj-plant-pals", "proj-career-crafter"] },
+    { t: "Change & risk", d: "Leadership transitions, team scaling and run-sheet discipline.", roles: ["role-wizoona", "role-tedx"], work: [] }
+  ],
+  toolkit: [
+    { t: "Python", under: ["MBAn, UTS"] },
+    { t: "SQL", under: ["MBAn, UTS"] },
+    { t: "Power BI", under: ["MBAn, UTS"] },
+    { t: "Tableau", under: ["MBAn, UTS"] },
+    { t: "Looker Studio", roles: ["role-export-connect"], work: ["tool-export-dashboard"] },
+    { t: "Excel (Advanced / Pivot Tables)", roles: ["role-export-connect"], under: ["MBAn, UTS"] },
+    { t: "Google Suite", roles: ["role-foruppo"], under: ["Google PM Certificate"] },
+    { t: "Microsoft Office Suite", roles: ["role-180dc"] },
+    { t: "AI tools & agents", work: ["tool-linkedin", "proj-debate"] }
+  ],
+
+  education: [
+    { t: "Master of Business Analytics", s: "University of Technology Sydney", img: "edu-uts.webp", d: "Feb 2025 – Dec 2026 (expected)", n: "GPA 6.0 / 7.0 (current) · Business Analytics, Data-Driven Decision Making, Strategic Management" },
+    { t: "BTech, Computer Science Engineering", s: "Rajiv Gandhi Institute of Technology, India", img: "edu-rit.jpeg", d: "Oct 2020 – Jun 2024", n: "GPA 7.86 / 10 · First Class · Data Structures, Systems Thinking, Information Management" }
+  ],
+  certs: [
+    ["Agile Project Management", "Google", "95.50%"],
+    ["Project Planning: Putting It All Together", "Google", "99.00%"],
+    ["Project Execution: Running the Project", "Google", "96.48%"],
+    ["Project Initiation: Starting a Successful Project", "Google", "99.45%"],
+    ["Foundations of Project Management", "Google", "91.53%"],
+    ["NPTEL: Project Management", "NPTEL", "60%"],
+    ["WIL to Work Program 2025", "UTS Careers", ""]
+  ]
+};
