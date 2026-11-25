@@ -27,7 +27,7 @@ window.SITE_DATA = {
 
   roles: [
     { id: "role-export-connect", color: "#ee7c34", dates: "Aug 2026 – Nov 2026", short: "Export Connect", title: "Project Intern", org: "Export Connect · Agri-food export consultancy",
-      tags: ["Market analysis", "Looker Studio", "Scorecards"],
+      tags: ["Market analysis", "Tools Building", "Scorecards and Presentations"],
       points: ["Ranked export markets for a national horticulture strategy: validated trade data and built a weighted scorecard with rating rules and confidence scores across 192 crop–market combinations (16 crops, 15 markets), giving a transparent, repeatable ranking colleagues could verify and update.",
                "Turned the scorecard into a Looker Studio dashboard and plain-language briefing slides for a high-level meeting of 5 stakeholder representatives and company executives, showing where to focus and why.",
                "Analysed ~5 grower and exporter interviews and 5–10 adjacent-category case studies, managing priorities with MoSCoW, to add primary and secondary evidence and shape the dashboard's focus on market access and feasibility."],
