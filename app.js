@@ -31,7 +31,7 @@
   const slug = (t) => 'skill-' + t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const roles = D.roles.map((r) => ({
     sec: 'roles', id: r.id, color: r.color, meta: r.dates, title: r.title, sub: r.org, short: r.short || r.org,
-    list: r.points, listLabel: 'Achievements', chips: r.skills || [], chipsLabel: 'Skills', tags: r.tags || [], imgs: []
+    list: r.points, listLabel: 'Achievements', chips: r.skills || [], chipsLabel: 'Skills', tags: r.tags || [], imgs: [], sites: r.sites || []
   }));
   const work = D.work.map((w, n) => ({
     sec: 'work', id: w.id, kind: w.kind, color: WCOL[n % 3], meta: w.kind + ' · ' + w.tag, title: w.title,
@@ -126,7 +126,7 @@
   $('#edu').innerHTML = D.education.map((e, i) =>
     `<div class="blk edu fly" style="--i:${i + 1}">${e.img ? `<div class="edu-img"><img src="images/${e.img}" alt="${e.s}" loading="lazy" onerror="this.parentNode.remove()"></div>` : ''}<span class="dt">${e.d}</span><h3>${e.t}</h3><div class="s">${e.s}</div><p>${e.n}</p></div>`).join('');
   $('#certs').innerHTML = D.certs.map((c, i) =>
-    `<div class="blk cert fly" style="--i:${i + 3}"><span class="dt">${c[1]}</span><h3>${c[0]}</h3>${c[2] ? `<b>${c[2]}</b>` : ''}</div>`).join('');
+    `<div class="tile cert" style="--i:${i}"><b>${c[0]}</b><small>${c[1]}${c[2] ? ' · ' + c[2] : ''}</small></div>`).join('');
   $('#c-mail').href = 'mailto:' + D.email;
   $('#c-in').href = D.linkedin;
   if (D.resume) { $('#c-cv').href = '#'; $('#c-cv').removeAttribute('target'); $('#c-cv').dataset.protect = 'resume'; } else $('#c-cv').style.display = 'none';
@@ -196,6 +196,7 @@
     (it.link ? `<div class="btns plink">${it.link}</div>` : '') +
     (it.list && it.list.length ? `<h4>${it.listLabel}</h4><ul>${it.list.map((a) => `<li>${a}</li>`).join('')}</ul>` : '') +
     (it.chips.length ? `<h4>${it.chipsLabel}</h4>${chips(it.chips)}` : '') +
+    (it.sites && it.sites.length ? `<h4>Websites:</h4><ul class="sites">${it.sites.map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener">${s.label} ↗</a><br><small>${s.url}</small></li>`).join('')}</ul>` : '') +
     groups(it).map((g) => `<h4>${g.label}</h4><div class="chips">${g.items.map(lc).join('')}${plain(g.p)}</div>`).join('');
 
   function build() {
