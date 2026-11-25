@@ -133,11 +133,11 @@ window.SITE_DATA = {
     { id: "site-export-dashboard", title: "Export Markets Dashboard", url: "https://datastudio.google.com/s/nf7FoOGAx7E", desc: "Looker Studio dashboard ranking export markets for a national horticulture strategy.",
       roles: ["role-export-connect"], work: ["tool-export-potential"], tags: ["Looker Studio", "Dashboard"] },
 
-     // TEDxGECRIT
+     /*// TEDxGECRIT
     { id: "site-tedxgecrit", title: "TEDxGECRIT", url: "https://tedxgecrit.vercel.app/", desc: "Official event website for the institution's first TEDx-licensed event.",
       roles: ["role-tedx"], work: [], tags: ["Website", "Event"] },
     { id: "site-tedx-event", title: "TEDxGECRIT on TED.com", url: "https://www.ted.com/tedx/events/54285", desc: "The event's official listing on the TEDx platform.",
-      roles: ["role-tedx"], work: [], tags: ["TEDx", "Event"] },
+      roles: ["role-tedx"], work: [], tags: ["TEDx", "Event"] }, */
      
     // Foruppo
     { id: "site-career-crafter", title: "Career Crafter", url: "https://careercrafter1.wordpress.com", thumb: "mshots", desc: "Minimalist career product site, co-built with a 10-member team during my Foruppo internship.",
